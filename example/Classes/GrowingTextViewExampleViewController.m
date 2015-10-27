@@ -66,7 +66,8 @@
     // you can also set the maximum height in points with maxHeight
     // textView.maxHeight = 200.0f;
 	textView.returnKeyType = UIReturnKeyGo; //just as an example
-	textView.font = [UIFont systemFontOfSize:15.0f];
+    UIFont * font = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    textView.font = font;
 	textView.delegate = self;
     textView.internalTextView.scrollIndicatorInsets = UIEdgeInsetsMake(5, 0, 5, 0);
     textView.backgroundColor = [UIColor whiteColor];
@@ -172,6 +173,8 @@
 
 - (void)growingTextView:(HPGrowingTextView *)growingTextView willChangeHeight:(float)height
 {
+    NSLog(@"- (BOOL)textEditor:(DBTextEditor*)textEditor shouldResizeBy:(CGFloat) %f", height);
+
     float diff = (growingTextView.frame.size.height - height);
 		
 	CGRect r = containerView.frame;
